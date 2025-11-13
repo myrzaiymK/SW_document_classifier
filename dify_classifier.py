@@ -29,10 +29,11 @@ class DocumentClassifier:
 
             data = response.json()
             outputs = data.get("data", {}).get("outputs", {})
+
             return {
                 "type": outputs.get("type", "Unknown"),
-                "confidence": outputs.get("confidence", 0.0)
-            }
+                "confidence": outputs.get("confidence", 0.0),
+                "elapsed_time": data.get("data", {}).get("elapsed_time", 0.0)}
 
         except Exception as e:
             return {"error": "Workflow request failed", "details": str(e)}
