@@ -1,0 +1,45 @@
+{
+  "Commercial Invoice": [
+    "invoice",
+    "commercial invoice",
+    "proforma invoice",
+    "shipper",
+    "consignee",
+    "amount",
+    "unit price"
+  ],
+  "Packing List": [
+    "packing list",
+    "items",
+    "carton",
+    "box",
+    "weight",
+    "quantity",
+    "gross weight",
+    "net weight"
+  ],
+  "Certificate of Origin": [
+    "certificate",
+    "origin",
+    "country of origin",
+    "chamber of commerce",
+    "issued by"
+  ],
+  "Customs Declaration": [
+    "customs",
+    "declaration",
+    "hs code",
+    "exporter",
+    "importer",
+    "duties",
+    "tariff"
+  ],
+  "Bill of Lading": [
+    "bill of lading",
+    "vessel",
+    "port of loading",
+    "port of discharge",
+    "carrier",
+    "seal number"
+  ]
+}

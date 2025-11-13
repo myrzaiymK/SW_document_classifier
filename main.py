@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
-from dify_classifier import DocumentClassifier
+from api_clients.dify_classifier import DocumentClassifier
 
 app = FastAPI(title="Document Type Classifier API")
 classifier = DocumentClassifier()
@@ -16,7 +16,9 @@ async def classify_document(file: UploadFile = File(...)):
     if not text.strip():
         return {"error": "File is empty or contains no readable text"}
 
-    result = classifier.classify_text(text)
+    from custom_classifier.preprocessing import normalize_text
+    clean_text = normalize_text(text)
+    result = classifier.classify_text(clean_text)
     return result
 
 if __name__ == "__main__":
