@@ -12,12 +12,9 @@ class DocumentClassifier:
                 "source": "local",
                 "type": local_result["top_type"],
                 "confidence": round(local_result["confidence"], 2),
-                "elapsed_time": 0.0,
+                "elapsed_time": local_result["elapsed_time"],
             }
 
         # иначе — отправляем запрос в Dify
         dify_result = dify_classify(text)
         return dify_result
-
-
-

@@ -1,9 +1,13 @@
+import time
 from collections import Counter
 from custom_classifier.indexing import build_inverted_index
 from custom_classifier.utils import load_document_terms
 
 
+
 def local_document_classifier(text: str) -> dict:
+    start_time = time.time()
+
     document_terms = load_document_terms()  # 🔹 загружаем из файла
     inverted_index = build_inverted_index(document_terms)
 
@@ -19,10 +23,20 @@ def local_document_classifier(text: str) -> dict:
 
     top_type, top_count = counts.most_common(1)[0]
     confidence = top_count / total_matches
+    end_time = time.time()
 
     return {
         "use_llm": confidence < 0.7,
         "top_type": top_type,
         "confidence": round(confidence, 3),
-        "candidates": [doc for doc, _ in counts.most_common(10)]
+        "candidates": [doc for doc, _ in counts.most_common(10)],
+        "elapsed_time": end_time - start_time,
     }
+
+
+# return {
+#     "source": "local",
+#     "type": local_result["top_type"],
+#     "confidence": round(local_result["confidence"], 2),
+#     "elapsed_time": 0.0,
+# }
